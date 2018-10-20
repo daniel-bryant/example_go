@@ -8,6 +8,8 @@ import (
   "github.com/gorilla/mux"
 )
 
+const port = ":3001"
+
 type Person struct {
   Name string
 }
@@ -32,5 +34,7 @@ func main() {
     fmt.Fprintf(w, string(bytes))
   })
 
-  http.ListenAndServe(":3001", r)
+  fmt.Printf("* Listening on tcp://0.0.0.0%s\n", port)
+  fmt.Print("Use Ctrl-C to stop\n")
+  http.ListenAndServe(port, r)
 }
